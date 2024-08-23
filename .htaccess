@@ -1,0 +1,13 @@
+# On autorise la réécriture de nos url
+
+RewriteEngine On
+
+# (Précondition) Si on a un fichier on en fait pas de redirection
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Condition pour renvoyer les url vers le dossier public/index.php
+# ^(.*)$ -> toute l'url qui sera représenté par $1
+# [QSA,L] -> Enchaine les param + L pour annoncer la dernière URL
+
+RewriteRule ^(.*)(/){0,1}$ public/index.php?url=$1 [QSA,L]
